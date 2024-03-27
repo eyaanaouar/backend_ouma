@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Bouchematg3{% endblock %}
+
+{% block body %}
+    <h1>Create new Bouchematg3</h1>
+
+    {{ include('bouchematg3/_form.html.twig') }}
+
+    <a href="{{ path('app_bouchematg3_index') }}">back to list</a>
+{% endblock %}

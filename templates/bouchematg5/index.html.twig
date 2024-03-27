@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bouchematg5 {% endblock %}
+
+{% block body %}
+    <h1>Bouchematg5 </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Tauxdegradation</th>
+                <th>Defconso</th>
+                <th>Rendement</th>
+                <th>Consogaz</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bouchematg5 in bouchematg5s %}
+            <tr>
+                <td>{{ bouchematg5.id }}</td>
+                <td>{{ bouchematg5.date ? bouchematg5.date|date('Y-m-d') : '' }}</td>
+                <td>{{ bouchematg5.tauxdegradation }}</td>
+                <td>{{ bouchematg5.defconso }}</td>
+                <td>{{ bouchematg5.rendement }}</td>
+                <td>{{ bouchematg5.consogaz }}</td>
+                <td>
+                    <a href="{{ path('app_bouchematg5_show', {'id': bouchematg5.id}) }}">show</a>
+                    <a href="{{ path('app_bouchematg5_edit', {'id': bouchematg5.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_bouchematg5_new') }}">Create new</a>
+{% endblock %}

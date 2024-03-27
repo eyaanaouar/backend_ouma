@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Goulettetg1 {% endblock %}
+
+{% block body %}
+    <h1>Goulettetg1 </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Tauxdegradation</th>
+                <th>Defconso</th>
+                <th>Rendement</th>
+                <th>Consogaz</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for goulettetg1 in goulettetg1s %}
+            <tr>
+                <td>{{ goulettetg1.id }}</td>
+                <td>{{ goulettetg1.date ? goulettetg1.date|date('Y-m-d') : '' }}</td>
+                <td>{{ goulettetg1.tauxdegradation }}</td>
+                <td>{{ goulettetg1.defconso }}</td>
+                <td>{{ goulettetg1.rendement }}</td>
+                <td>{{ goulettetg1.consogaz }}</td>
+                <td>
+                    <a href="{{ path('app_goulettetg1_show', {'id': goulettetg1.id}) }}">show</a>
+                    <a href="{{ path('app_goulettetg1_edit', {'id': goulettetg1.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_goulettetg1_new') }}">Create new</a>
+{% endblock %}

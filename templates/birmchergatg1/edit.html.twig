@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Birmchergatg1{% endblock %}
+
+{% block body %}
+    <h1>Edit Birmchergatg1</h1>
+
+    {{ include('birmchergatg1/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_birmchergatg1_index') }}">back to list</a>
+
+    {{ include('birmchergatg1/_delete_form.html.twig') }}
+{% endblock %}

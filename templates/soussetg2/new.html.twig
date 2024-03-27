@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Soussetg2{% endblock %}
+
+{% block body %}
+    <h1>Create new Soussetg2</h1>
+
+    {{ include('soussetg2/_form.html.twig') }}
+
+    <a href="{{ path('app_soussetg2_index') }}">back to list</a>
+{% endblock %}

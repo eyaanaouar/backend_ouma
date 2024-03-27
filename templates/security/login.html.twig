@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin-top: 500vh;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            width: 300px;
+        }
+
+        .form-control {
+            width: 100%;
+            height: 40px;
+            background-color: #D5E1FF; /* Nouvelle règle */
+        }
+
+        .btn-primary {
+             width: 100px; 
+            height: 40px;
+            background-color: #4576F9;
+        }
+           .alert-danger {
+              width: 300px; 
+            height: 50px;
+           background-color: #FFCFC7;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="form-container">
+    <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
+
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+        <div class="form-group">
+            <label for="inputEmail">Email</label>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+        </div>
+
+        <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+        </div>
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+        <button class="btn btn-lg btn-primary" type="submit">
+            Sign in
+        </button>
+    </form>
+</div>
+{% endblock %}

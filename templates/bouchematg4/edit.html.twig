@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Bouchematg4{% endblock %}
+
+{% block body %}
+    <h1>Edit Bouchematg4</h1>
+
+    {{ include('bouchematg4/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_bouchematg4_index') }}">back to list</a>
+
+    {{ include('bouchematg4/_delete_form.html.twig') }}
+{% endblock %}

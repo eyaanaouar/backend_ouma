@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ferianatg2 {% endblock %}
+
+{% block body %}
+    <h1>Ferianatg2 </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Tauxdegradation</th>
+                <th>Defconso</th>
+                <th>Rendement</th>
+                <th>Consogaz</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ferianatg2 in ferianatg2s %}
+            <tr>
+                <td>{{ ferianatg2.id }}</td>
+                <td>{{ ferianatg2.date ? ferianatg2.date|date('Y-m-d') : '' }}</td>
+                <td>{{ ferianatg2.tauxdegradation }}</td>
+                <td>{{ ferianatg2.defconso }}</td>
+                <td>{{ ferianatg2.rendement }}</td>
+                <td>{{ ferianatg2.consogaz }}</td>
+                <td>
+                    <a href="{{ path('app_ferianatg2_show', {'id': ferianatg2.id}) }}">show</a>
+                    <a href="{{ path('app_ferianatg2_edit', {'id': ferianatg2.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_ferianatg2_new') }}">Create new</a>
+{% endblock %}

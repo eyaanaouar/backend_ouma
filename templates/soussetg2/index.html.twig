@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Soussetg2 {% endblock %}
+
+{% block body %}
+    <h1>Soussetg2 </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Tauxdegradation</th>
+                <th>Defconso</th>
+                <th>Rendement</th>
+                <th>Consogaz</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for soussetg2 in soussetg2s %}
+            <tr>
+                <td>{{ soussetg2.id }}</td>
+                <td>{{ soussetg2.date ? soussetg2.date|date('Y-m-d') : '' }}</td>
+                <td>{{ soussetg2.tauxdegradation }}</td>
+                <td>{{ soussetg2.defconso }}</td>
+                <td>{{ soussetg2.rendement }}</td>
+                <td>{{ soussetg2.consogaz }}</td>
+                <td>
+                    <a href="{{ path('app_soussetg2_show', {'id': soussetg2.id}) }}">show</a>
+                    <a href="{{ path('app_soussetg2_edit', {'id': soussetg2.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_soussetg2_new') }}">Create new</a>
+{% endblock %}

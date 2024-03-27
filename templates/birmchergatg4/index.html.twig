@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Birmchergatg4 {% endblock %}
+
+{% block body %}
+    <h1>Birmchergatg4 </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Tauxdegradation</th>
+                <th>Defconso</th>
+                <th>Rendement</th>
+                <th>Consogaz</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for birmchergatg4 in birmchergatg4s %}
+            <tr>
+                <td>{{ birmchergatg4.id }}</td>
+                <td>{{ birmchergatg4.date ? birmchergatg4.date|date('Y-m-d') : '' }}</td>
+                <td>{{ birmchergatg4.tauxdegradation }}</td>
+                <td>{{ birmchergatg4.defconso }}</td>
+                <td>{{ birmchergatg4.rendement }}</td>
+                <td>{{ birmchergatg4.consogaz }}</td>
+                <td>
+                    <a href="{{ path('app_birmchergatg4_show', {'id': birmchergatg4.id}) }}">show</a>
+                    <a href="{{ path('app_birmchergatg4_edit', {'id': birmchergatg4.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_birmchergatg4_new') }}">Create new</a>
+{% endblock %}

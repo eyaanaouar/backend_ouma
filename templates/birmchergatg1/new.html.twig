@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Birmchergatg1{% endblock %}
+
+{% block body %}
+    <h1>Create new performance indicators</h1>
+
+    {{ include('birmchergatg1/_form.html.twig') }}
+
+    <a href="{{ path('app_birmchergatg1_index') }}">back to list</a>
+{% endblock %}

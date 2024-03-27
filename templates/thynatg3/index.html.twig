@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Thynatg3 {% endblock %}
+
+{% block body %}
+    <h1>Thynatg3 </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Tauxdegradation</th>
+                <th>Defconso</th>
+                <th>Rendement</th>
+                <th>Consogaz</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for thynatg3 in thynatg3s %}
+            <tr>
+                <td>{{ thynatg3.id }}</td>
+                <td>{{ thynatg3.date ? thynatg3.date|date('Y-m-d') : '' }}</td>
+                <td>{{ thynatg3.tauxdegradation }}</td>
+                <td>{{ thynatg3.defconso }}</td>
+                <td>{{ thynatg3.rendement }}</td>
+                <td>{{ thynatg3.consogaz }}</td>
+                <td>
+                    <a href="{{ path('app_thynatg3_show', {'id': thynatg3.id}) }}">show</a>
+                    <a href="{{ path('app_thynatg3_edit', {'id': thynatg3.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_thynatg3_new') }}">Create new</a>
+{% endblock %}

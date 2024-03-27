@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Tauxdegradation Data</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Tauxdegradation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for birmchergatg1 in birmchergatg1 %}
+                <tr>
+                    <td>{{ birmchergatg1.id }}</td>
+                    <td>{{ birmchergatg1.tauxdegradation }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Ferianatg2{% endblock %}
+
+{% block body %}
+    <h1>Edit Ferianatg2</h1>
+
+    {{ include('ferianatg2/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_ferianatg2_index') }}">back to list</a>
+
+    {{ include('ferianatg2/_delete_form.html.twig') }}
+{% endblock %}

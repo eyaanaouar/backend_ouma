@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Birmchergatg4{% endblock %}
+
+{% block body %}
+    <h1>Birmchergatg4</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ birmchergatg4.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ birmchergatg4.date ? birmchergatg4.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Tauxdegradation</th>
+                <td>{{ birmchergatg4.tauxdegradation }}</td>
+            </tr>
+            <tr>
+                <th>Defconso</th>
+                <td>{{ birmchergatg4.defconso }}</td>
+            </tr>
+            <tr>
+                <th>Rendement</th>
+                <td>{{ birmchergatg4.rendement }}</td>
+            </tr>
+            <tr>
+                <th>Consogaz</th>
+                <td>{{ birmchergatg4.consogaz }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_birmchergatg4_index') }}">back to list</a>
+
+    <a href="{{ path('app_birmchergatg4_edit', {'id': birmchergatg4.id}) }}">edit</a>
+
+    {{ include('birmchergatg4/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Goulettetg1{% endblock %}
+
+{% block body %}
+    <h1>Edit Goulettetg1</h1>
+
+    {{ include('goulettetg1/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_goulettetg1_index') }}">back to list</a>
+
+    {{ include('goulettetg1/_delete_form.html.twig') }}
+{% endblock %}

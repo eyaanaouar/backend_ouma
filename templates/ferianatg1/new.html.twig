@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Ferianatg1{% endblock %}
+
+{% block body %}
+    <h1>Create new Ferianatg1</h1>
+
+    {{ include('ferianatg1/_form.html.twig') }}
+
+    <a href="{{ path('app_ferianatg1_index') }}">back to list</a>
+{% endblock %}

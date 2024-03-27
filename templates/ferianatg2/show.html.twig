@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ferianatg2{% endblock %}
+
+{% block body %}
+    <h1>Ferianatg2</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ ferianatg2.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ ferianatg2.date ? ferianatg2.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Tauxdegradation</th>
+                <td>{{ ferianatg2.tauxdegradation }}</td>
+            </tr>
+            <tr>
+                <th>Defconso</th>
+                <td>{{ ferianatg2.defconso }}</td>
+            </tr>
+            <tr>
+                <th>Rendement</th>
+                <td>{{ ferianatg2.rendement }}</td>
+            </tr>
+            <tr>
+                <th>Consogaz</th>
+                <td>{{ ferianatg2.consogaz }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_ferianatg2_index') }}">back to list</a>
+
+    <a href="{{ path('app_ferianatg2_edit', {'id': ferianatg2.id}) }}">edit</a>
+
+    {{ include('ferianatg2/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Soussetg1{% endblock %}
+
+{% block body %}
+    <h1>Soussetg1</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ soussetg1.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ soussetg1.date ? soussetg1.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Tauxdegradation</th>
+                <td>{{ soussetg1.tauxdegradation }}</td>
+            </tr>
+            <tr>
+                <th>Defconso</th>
+                <td>{{ soussetg1.defconso }}</td>
+            </tr>
+            <tr>
+                <th>Rendement</th>
+                <td>{{ soussetg1.rendement }}</td>
+            </tr>
+            <tr>
+                <th>Consogaz</th>
+                <td>{{ soussetg1.consogaz }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_soussetg1_index') }}">back to list</a>
+
+    <a href="{{ path('app_soussetg1_edit', {'id': soussetg1.id}) }}">edit</a>
+
+    {{ include('soussetg1/_delete_form.html.twig') }}
+{% endblock %}

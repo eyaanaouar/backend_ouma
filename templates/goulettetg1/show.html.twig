@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Goulettetg1{% endblock %}
+
+{% block body %}
+    <h1>Goulettetg1</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ goulettetg1.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ goulettetg1.date ? goulettetg1.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Tauxdegradation</th>
+                <td>{{ goulettetg1.tauxdegradation }}</td>
+            </tr>
+            <tr>
+                <th>Defconso</th>
+                <td>{{ goulettetg1.defconso }}</td>
+            </tr>
+            <tr>
+                <th>Rendement</th>
+                <td>{{ goulettetg1.rendement }}</td>
+            </tr>
+            <tr>
+                <th>Consogaz</th>
+                <td>{{ goulettetg1.consogaz }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_goulettetg1_index') }}">back to list</a>
+
+    <a href="{{ path('app_goulettetg1_edit', {'id': goulettetg1.id}) }}">edit</a>
+
+    {{ include('goulettetg1/_delete_form.html.twig') }}
+{% endblock %}

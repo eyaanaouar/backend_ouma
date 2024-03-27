@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Soussetg2{% endblock %}
+
+{% block body %}
+    <h1>Edit Soussetg2</h1>
+
+    {{ include('soussetg2/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_soussetg2_index') }}">back to list</a>
+
+    {{ include('soussetg2/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Thynatg2{% endblock %}
+
+{% block body %}
+    <h1>Thynatg2</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ thynatg2.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ thynatg2.date ? thynatg2.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Tauxdegradation</th>
+                <td>{{ thynatg2.tauxdegradation }}</td>
+            </tr>
+            <tr>
+                <th>Defconso</th>
+                <td>{{ thynatg2.defconso }}</td>
+            </tr>
+            <tr>
+                <th>Rendement</th>
+                <td>{{ thynatg2.rendement }}</td>
+            </tr>
+            <tr>
+                <th>Consogaz</th>
+                <td>{{ thynatg2.consogaz }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_thynatg2_index') }}">back to list</a>
+
+    <a href="{{ path('app_thynatg2_edit', {'id': thynatg2.id}) }}">edit</a>
+
+    {{ include('thynatg2/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bouchematg5{% endblock %}
+
+{% block body %}
+    <h1>Bouchematg5</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ bouchematg5.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ bouchematg5.date ? bouchematg5.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Tauxdegradation</th>
+                <td>{{ bouchematg5.tauxdegradation }}</td>
+            </tr>
+            <tr>
+                <th>Defconso</th>
+                <td>{{ bouchematg5.defconso }}</td>
+            </tr>
+            <tr>
+                <th>Rendement</th>
+                <td>{{ bouchematg5.rendement }}</td>
+            </tr>
+            <tr>
+                <th>Consogaz</th>
+                <td>{{ bouchematg5.consogaz }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_bouchematg5_index') }}">back to list</a>
+
+    <a href="{{ path('app_bouchematg5_edit', {'id': bouchematg5.id}) }}">edit</a>
+
+    {{ include('bouchematg5/_delete_form.html.twig') }}
+{% endblock %}

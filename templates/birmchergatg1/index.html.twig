@@ -1,0 +1,131 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Birmcherga Tg1{% endblock %}
+
+{% block body %}
+    <button onclick="showChart()">Chart</button>
+    <button onclick="showTable()">Table</button>
+
+    <div id="chartContainer" style="display: none;">
+        <canvas id="myChart" style="height: 400px; width: 600px;"></canvas>
+    </div>
+
+    <div id="tableContainer" style="display: none;">
+        <h1>Birmchergatg1</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Date</th>
+                    <th>Tauxdegradation</th>
+                    <th>Defconso</th>
+                    <th>Rendement</th>
+                    <th>Consogaz</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for birmchergatg1 in birmchergatg1s %}
+                <tr>
+                    <td>{{ birmchergatg1.id }}</td>
+                    <td>{{ birmchergatg1.date ? birmchergatg1.date|date('Y-m-d') : '' }}</td>
+                    <td>{{ birmchergatg1.tauxdegradation }}</td>
+                    <td>{{ birmchergatg1.defconso }}</td>
+                    <td>{{ birmchergatg1.rendement }}</td>
+                    <td>{{ birmchergatg1.consogaz }}</td>
+                    <td>
+                        <a href="{{ path('app_birmchergatg1_show', {'id': birmchergatg1.id}) }}">show</a>
+                        <a href="{{ path('app_birmchergatg1_edit', {'id': birmchergatg1.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_birmchergatg1_new') }}">Create new</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function showChart() {
+            var chartContainer = document.getElementById("chartContainer");
+            var tableContainer = document.getElementById("tableContainer");
+
+            chartContainer.style.display = "block";
+            tableContainer.style.display = "none";
+
+            var labels = [];
+            var tauxdegradationData = [];
+            var defconsoData = [];
+            var rendementData = [];
+            var consogazData = [];
+
+            // Récupérer les données du tableau
+            var tableRows = document.querySelectorAll("#tableContainer tbody tr");
+            tableRows.forEach(function(row) {
+                var columns = row.querySelectorAll("td");
+                labels.push(columns[1].textContent); // Date
+                tauxdegradationData.push(parseFloat(columns[2].textContent)); // Tauxdegradation
+                defconsoData.push(parseFloat(columns[3].textContent)); // Defconso
+                rendementData.push(parseFloat(columns[4].textContent)); // Rendement
+                consogazData.push(parseFloat(columns[5].textContent)); // Consogaz
+            });
+
+            // Créer le graphe
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Tauxdegradation',
+                            data: tauxdegradationData,
+                            borderColor: 'rgb(255, 99, 132)',
+                            tension: 0.1
+                        },
+                        {
+                            label: 'Defconso',
+                            data: defconsoData,
+                            borderColor: 'rgb(54, 162, 235)',
+                            tension: 0.1
+                        },
+                        {
+                            label: 'Rendement',
+                            data: rendementData,
+                            borderColor: 'rgb(255, 206, 86)',
+                            tension: 0.1
+                        },
+                        {
+                            label: 'Consogaz',
+                            data: consogazData,
+                            borderColor: 'rgb(75, 192, 192)',
+                            tension: 0.1
+                        }
+                    ]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        function showTable() {
+            var chartContainer = document.getElementById("chartContainer");
+            var tableContainer = document.getElementById("tableContainer");
+
+            chartContainer.style.display = "none";
+            tableContainer.style.display = "block";
+        }
+    </script>
+{% endblock %}
